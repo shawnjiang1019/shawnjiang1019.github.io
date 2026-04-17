@@ -11,7 +11,7 @@ export const experience: Experience[] = [
     role: 'Research Intern',
     company: 'Lee Language Lab',
     stack: 'NLP, PyTorch, LLMs',
-    period: 'May 2026',
+    period: 'April 2026',
     description:
       'Knowledge graphs and deep learning methods for cultural context in LLMs, supervised by Dr. Enas Altarawneh.',
   },
