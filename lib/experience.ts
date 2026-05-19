@@ -13,7 +13,7 @@ export const experience: Experience[] = [
     stack: 'NLP, PyTorch, LLMs',
     period: 'April 2026',
     description:
-      'Knowledge graphs and deep learning methods for cultural context in LLMs, supervised by Dr. Enas Altarawneh.',
+      'Knowledge graphs and deep learning methods for cultural reasoning tasks in LLMs, supervised by Dr. Enas Altarawneh.',
   },
   {
     role: 'Software Engineer Intern',
