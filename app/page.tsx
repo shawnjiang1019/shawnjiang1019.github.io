@@ -46,6 +46,12 @@ export default function Home() {
             → <a href="/projects/">[projects]</a> — things I&apos;ve built
           </li>
           <li>
+            → <a href="/notes/">[notes]</a> — things I&apos;m learning
+          </li>
+          <li>
+            → <a href="/reading/">[reading]</a> — what&apos;s on my shelf
+          </li>
+          <li>
             → <a href="/resume.pdf">[resume]</a> — the formal version
           </li>
           <li>

@@ -17,6 +17,12 @@ export default function Nav() {
         <Link href="/projects/" className="no-underline hover:underline">
           [projects]
         </Link>
+        <Link href="/notes/" className="no-underline hover:underline">
+          [notes]
+        </Link>
+        <Link href="/reading/" className="no-underline hover:underline">
+          [reading]
+        </Link>
         <a href="/resume.pdf" className="no-underline hover:underline">
           [resume]
         </a>
