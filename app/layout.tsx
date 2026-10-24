@@ -1,11 +1,13 @@
 import type { Metadata } from 'next';
 import { GeistMono } from 'geist/font/mono';
-import { Instrument_Serif } from 'next/font/google';
+import { Newsreader } from 'next/font/google';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import './globals.css';
 
-const instrumentSerif = Instrument_Serif({
+// Newsreader's italic is wider and more open than Instrument Serif's,
+// which read as cramped at heading sizes.
+const newsreader = Newsreader({
   subsets: ['latin'],
   variable: '--font-serif',
   weight: ['400'],
@@ -27,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${GeistMono.variable} ${instrumentSerif.variable}`}>
+    <html lang="en" className={`${GeistMono.variable} ${newsreader.variable}`}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>

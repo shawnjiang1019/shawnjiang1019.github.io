@@ -1,3 +1,36 @@
+import type { CSSProperties, ReactNode } from 'react';
+
+// Highlighter sweep for key phrases; `delay` staggers the sweeps (seconds).
+// `org` marks a workplace rather than a topic, in its own colour.
+function Mark({
+  children,
+  delay = 0,
+  org = false,
+}: {
+  children: ReactNode;
+  delay?: number;
+  org?: boolean;
+}) {
+  return (
+    <mark className={org ? 'mark mark-org' : 'mark'} style={{ '--d': `${delay}s` } as CSSProperties}>
+      {children}
+    </mark>
+  );
+}
+
+// Serif italic for ideas rather than facts.
+function Term({ children }: { children: ReactNode }) {
+  return <em className="term">{children}</em>;
+}
+
+function Reveal({ children, delay }: { children: ReactNode; delay: number }) {
+  return (
+    <p className="reveal" style={{ '--d': `${delay}s` } as CSSProperties}>
+      {children}
+    </p>
+  );
+}
+
 export default function Home() {
   return (
     <article>
@@ -16,22 +49,40 @@ export default function Home() {
       <hr />
 
       <section className="space-y-5">
-        <p>
+        <Reveal delay={0.05}>
           I&apos;m an Honours BSc student in{' '}
-          Computer Science and Statistics{' '}
-          at the University of Toronto. 
-          I like building things with code.
-        </p>
+          <Mark delay={0.5}>Computer Science and Statistics</Mark>{' '}
+          at the University of Toronto.
+        </Reveal>
+
+        <Reveal delay={0.2}>
+          I&apos;m interested in <Mark delay={0.8}>agentic systems</Mark> and their
+          capabilities in solving <Term>open-ended problems</Term>, and primarily
+          methods of ensuring <Mark delay={1.05}>reliability and correctness</Mark>.
+        </Reveal>
+
+        <Reveal delay={0.35}>
+          I&apos;m also interested in <Mark delay={1.3}>databases and systems</Mark> as a whole.
+          Other than learning about traditional storage system internals,
+          I believe in the emerging paradigm of{' '}
+          <span className="chip">Agents4DB</span> and <span className="chip">DB4Agents</span>.
+          In other words, the next frontier is building{' '}
+          <Mark delay={1.55}>storage systems for agent artifacts</Mark>,
+          and designing data environments with an{' '}
+          <Term>&ldquo;agent as a first-class user&rdquo;</Term> lens.
+          I&apos;m working on some of these topics at <Mark delay={1.7} org>Huawei</Mark> currently.
+        </Reveal>
         {/* <p>
           Most recently I&apos;ve been working on{' '}
           <span className="font-serif italic">deep learning for cultural context in LLMs</span>{' '}
           at the Lee Language Lab, and before that I shipped backend features
           at Seequent and architected a peer assessment platform at U of T.
         </p> */}
-        <p>
-          When I&apos;m not studying you can find me taking pictures of food,
-          shipping things, and occasionally wandering offline.
-        </p>
+        <Reveal delay={0.5}>
+          I&apos;m also in the process of learning more about{' '}
+          <Mark delay={1.8}>computer vision</Mark>. I&apos;m astounded that I didn&apos;t
+          start looking at this stuff earlier.
+        </Reveal>
       </section>
 
       <hr />

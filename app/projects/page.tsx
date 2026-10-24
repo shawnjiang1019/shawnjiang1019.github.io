@@ -28,6 +28,31 @@ export default function ProjectsPage() {
               </span>
             </div>
             <p className="mt-2">{p.description}</p>
+            {p.points && p.points.length > 0 && (
+              <ul className="mt-2 list-disc space-y-1 pl-5">
+                {p.points.map((pt) => (
+                  <li key={pt}>{pt}</li>
+                ))}
+              </ul>
+            )}
+            {p.diagram && (
+              <details className="mt-3">
+                <summary className="cursor-pointer text-xs text-[color:var(--color-muted)]">
+                  [architecture]
+                </summary>
+                {/* Break out of the prose column so the figure stays legible. */}
+                <a
+                  href={p.diagram}
+                  className="relative left-1/2 mt-3 block w-[min(1100px,calc(100vw-3rem))] -translate-x-1/2"
+                >
+                  <img
+                    src={p.diagram}
+                    alt={`${p.title} architecture diagram`}
+                    className="w-full rounded-lg border border-[color:var(--color-border)]"
+                  />
+                </a>
+              </details>
+            )}
             {p.tags && p.tags.length > 0 && (
               <p className="mt-2 text-xs text-[color:var(--color-muted)]">
                 {p.tags.map((t) => `[${t}]`).join(' ')}

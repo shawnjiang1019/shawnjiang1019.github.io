@@ -11,7 +11,7 @@ export default function ExperiencePage() {
     <article>
       <h1 className="italic">experience</h1>
       <p className="mt-3 text-[color:var(--color-muted)]">
-        Work and research, most recent first.
+        Formative work and research experiences for me.
       </p>
 
       <hr />
@@ -28,7 +28,11 @@ export default function ExperiencePage() {
             <p className="text-[color:var(--color-muted)]">
               {e.company} &middot; {e.stack}
             </p>
-            <p className="mt-2">{e.description}</p>
+            <ul className="mt-2 list-disc space-y-1 pl-5">
+              {e.points.map((pt) => (
+                <li key={pt}>{pt}</li>
+              ))}
+            </ul>
           </li>
         ))}
       </ul>

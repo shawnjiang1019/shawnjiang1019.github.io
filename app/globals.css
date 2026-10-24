@@ -8,6 +8,9 @@
   --color-fg: #0a0a0a;
   --color-muted: #737373;
   --color-border: #e5e5e5;
+  --color-mark: rgba(250, 204, 21, 0.38);
+  --color-org: #c8102e;
+  --color-org-tint: rgba(200, 16, 46, 0.1);
 }
 
 [data-theme='dark'] {
@@ -15,6 +18,9 @@
   --color-fg: #e5e5e5;
   --color-muted: #737373;
   --color-border: #262626;
+  --color-mark: rgba(250, 204, 21, 0.24);
+  --color-org: #f05a6e;
+  --color-org-tint: rgba(240, 90, 110, 0.14);
 }
 
 html {
@@ -37,7 +43,7 @@ h2,
 h3 {
   font-family: var(--font-serif), Georgia, Cambria, serif;
   font-weight: 400;
-  letter-spacing: -0.015em;
+  letter-spacing: 0.005em;
 }
 
 h1 {
@@ -75,4 +81,99 @@ hr {
 ::selection {
   background: var(--color-fg);
   color: var(--color-bg);
+}
+
+/* Home page emphasis */
+
+.mark {
+  color: inherit;
+  padding: 0 0.15em;
+  margin: 0 -0.05em;
+  background-color: transparent;
+  background-image: linear-gradient(
+    transparent 38%,
+    var(--color-mark) 38%,
+    var(--color-mark) 94%,
+    transparent 94%
+  );
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  animation: mark-sweep 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0s) forwards;
+}
+
+/* Workplace: red tint with a solid underline, drawn in like the highlights. */
+.mark-org {
+  font-weight: 600;
+  color: var(--color-org);
+  border-radius: 3px;
+  background-image:
+    linear-gradient(var(--color-org), var(--color-org)),
+    linear-gradient(var(--color-org-tint), var(--color-org-tint));
+  background-position: left bottom, left top;
+  background-size: 0% 2px, 0% 100%;
+  animation-name: org-sweep;
+}
+
+@keyframes org-sweep {
+  to {
+    background-size: 100% 2px, 100% 100%;
+  }
+}
+
+.term {
+  font-family: var(--font-serif), Georgia, serif;
+  font-style: italic;
+  font-size: 1.15em;
+  letter-spacing: 0.01em;
+}
+
+.chip {
+  display: inline-block;
+  padding: 0 0.4em;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  font-size: 0.92em;
+  line-height: 1.5;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.chip:hover {
+  border-color: var(--color-muted);
+  background-color: var(--color-mark);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(6px);
+  animation: reveal-in 0.6s ease-out var(--d, 0s) forwards;
+}
+
+@keyframes mark-sweep {
+  to {
+    background-size: 100% 100%;
+  }
+}
+
+@keyframes reveal-in {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mark {
+    animation: none;
+    background-size: 100% 100%;
+  }
+  .mark-org {
+    background-size: 100% 2px, 100% 100%;
+  }
+  .reveal {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
 }
